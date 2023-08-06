@@ -1,0 +1,26 @@
+The package requirements for the provided Python program are as follows:
+
+- requests
+- bs4 (BeautifulSoup)
+- statsmodels.tsa.arima.model (ARIMA)
+- pandas
+- smtplib
+- email.mime.multipart (MIMEMultipart)
+- email.mime.text (MIMEText)
+- plotly.express (px)
+- dash
+- dash_core_components (dcc)
+- dash_html_components (html)
+- transformers
+
+You can install these packages using pip:
+
+```
+pip install requests
+pip install beautifulsoup4
+pip install statsmodels
+pip install pandas
+pip install plotly
+pip install dash
+pip install transformers
+```
