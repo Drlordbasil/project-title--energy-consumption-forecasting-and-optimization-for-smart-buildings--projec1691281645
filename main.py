@@ -60,7 +60,8 @@ class EnergyAnalyzer:
         """
         Merge the collected data into a single dataframe
         """
-        merged_data = pd.concat([pd.DataFrame(data1), pd.DataFrame(data2), pd.DataFrame(data3)], axis=1)
+        merged_data = pd.concat(
+            [pd.DataFrame(data1), pd.DataFrame(data2), pd.DataFrame(data3)], axis=1)
 
         return merged_data
 
@@ -80,7 +81,8 @@ class EnergyAnalyzer:
         model = ARIMA(train_data['consumption'], order=(1, 1, 1))
         fitted_model = model.fit()
 
-        forecast = fitted_model.predict(start=test_data.index[0], end=test_data.index[-1])
+        forecast = fitted_model.predict(
+            start=test_data.index[0], end=test_data.index[-1])
 
         return forecast
 
@@ -141,7 +143,8 @@ class EnergyAnalyzer:
         """
         Generate comprehensive reports using Plotly or other visualization libraries
         """
-        report = px.line(data, x='timestamp', y='consumption', title='Energy Consumption Report')
+        report = px.line(data, x='timestamp', y='consumption',
+                         title='Energy Consumption Report')
         report.show()
 
     def create_dashboard(self, data):
@@ -152,8 +155,10 @@ class EnergyAnalyzer:
 
         app.layout = html.Div([
             html.H1('Energy Consumption Dashboard'),
-            dcc.Graph(figure=px.line(data, x='timestamp', y='consumption', title='Energy Consumption')),
-            dcc.Graph(figure=px.bar(data, x='device', y='consumption', title='Device-wise Consumption'))
+            dcc.Graph(figure=px.line(data, x='timestamp',
+                      y='consumption', title='Energy Consumption')),
+            dcc.Graph(figure=px.bar(data, x='device',
+                      y='consumption', title='Device-wise Consumption'))
         ])
 
         app.run_server(debug=True)
